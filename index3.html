@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabajo</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: white;
+            margin: 0;
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: lightblue;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        nav {
+            background-color: #f0f0f0;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #contenedor-iframe {
+            display: flex;
+            align-items: center;
+        }
+
+        #iframe-grafica {
+            width: 900px;
+            height: 640px;
+            border: none;
+            transition: opacity 0.5s ease-in-out; /* Transición para la animación */
+        }
+
+        .botones-laterales {
+            display: flex;
+            flex-direction: column;
+            margin: 0 20px;
+        }
+
+        .botones-laterales button {
+            padding: 10px;
+            margin: 5px 0;
+        }
+
+        #descripcion-grafica {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Estilos para la animación de fade-in */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Trabajo</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Página principal</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div id="contenedor-iframe">
+            <div class="botones-laterales">
+                <button class="btn btn-primary" onclick="cambiarGrafica(-1)">Anterior</button>
+            </div>
+            <iframe id="iframe-grafica" src="./graficas/grafica1.html"></iframe>
+            <div class="botones-laterales">
+                <button class="btn btn-primary" onclick="cambiarGrafica(1)">Siguiente</button>
+            </div>
+        </div>
+        <div id="descripcion-grafica">
+            Descripción de la gráfica 1
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        const graficas = ["./graficas/grafica1.html", "./graficas/grafica2.html", "./graficas/grafica3.html","./graficas/grafica4.html", "./graficas/grafica5.html", "./graficas/grafica6.html", "./graficas/grafica6.html", "./graficas/grafica7.html","./graficas/grafica8.html","./graficas/grafica9.html"];
+        let indiceGraficaActual = 0;
+
+        function cambiarGrafica(direccion) {
+            // Obtener el iframe y añadir la clase fade-in para la animación
+            const iframe = document.getElementById("iframe-grafica");
+            iframe.classList.add("fade-in");
+
+            // Esperar a que termine la animación antes de cambiar la ruta del iframe
+            setTimeout(() => {
+                indiceGraficaActual = (indiceGraficaActual + direccion + graficas.length) % graficas.length;
+                iframe.src = graficas[indiceGraficaActual];
+                iframe.classList.remove("fade-in"); // Remover la clase fade-in para la siguiente animación
+
+                const descripciones = ["Descripción de la gráfica 1", "Descripción de la gráfica 2",
+                    "Descripción de la gráfica 3","Descripción de la gráfica 4", "Descripción de la gráfica 5",
+                    "Descripción de la gráfica 6","Descripción de la gráfica 7", "Descripción de la gráfica 8",
+                    "Descripción de la gráfica 9"
+                ];
+                document.getElementById("descripcion-grafica").textContent = descripciones[indiceGraficaActual];
+            }, 500); // Espera 500ms (la duración de la animación)
+        }
+    </script>
+</body>
+
+</html>
+

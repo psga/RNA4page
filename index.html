@@ -4,159 +4,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Trabajo</title>
+    <title>RNA Punto 1</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
-            background-color: white;
-            margin: 0;
-            font-family: sans-serif;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        header {
-            background-color: lightblue;
             padding: 20px;
-            text-align: center;
         }
 
-        h1 {
-            margin-top: 0;
-        }
-
-        nav {
-            background-color: #f0f0f0;
-            padding: 10px;
-        }
-
-        nav ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-
-        nav li {
-            display: inline;
-            margin: 0 10px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #333;
-        }
-
-        main {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        #contenedor-iframe {
-            display: flex;
-            align-items: center;
-        }
-
-        #iframe-grafica {
-            width: 900px;
-            height: 640px;
-            border: none;
-            transition: opacity 0.5s ease-in-out; /* Transición para la animación */
-        }
-
-        .botones-laterales {
-            display: flex;
-            flex-direction: column;
-            margin: 0 20px;
-        }
-
-        .botones-laterales button {
-            padding: 10px;
-            margin: 5px 0;
+        #grafica-container {
+            height: 500px;
+            /* Ajusta la altura según tus necesidades */
         }
 
         #descripcion-grafica {
             margin-top: 20px;
-            text-align: center;
         }
 
-        /* Estilos para la animación de fade-in */
-        .fade-in {
-            opacity: 0;
-            animation: fadeIn 0.5s ease-in-out forwards;
+        #botones-navegacion {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-
-            to {
-                opacity: 1;
-            }
+        #botones-navegacion button {
+            margin: 0 10px;
         }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>Trabajo</h1>
+        <h1>RNA punto 1: Graficas </h1>
     </header>
 
     <nav>
-        <ul>
-            <li><a href="#">Página principal</a></li>
-        </ul>
+        <a href="#">Página principal</a>
     </nav>
 
-    <main>
-        <div id="contenedor-iframe">
-            <div class="botones-laterales">
-                <button class="btn btn-primary" onclick="cambiarGrafica(-1)">Anterior</button>
-            </div>
-            <iframe id="iframe-grafica" src="./graficas/grafica1.html"></iframe>
-            <div class="botones-laterales">
-                <button class="btn btn-primary" onclick="cambiarGrafica(1)">Siguiente</button>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div id="grafica-container">
+                    <iframe src="graficas/grafica1.html" frameborder="0" width="100%" height="100%"
+                        id="iframe-grafica"></iframe>
+                </div>
             </div>
         </div>
-        <div id="descripcion-grafica">
-            Descripción de la gráfica 1
-        </div>
-    </main>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <div class="row">
+            <div class="col-12" id="botones-navegacion">
+                <button type="button" class="btn btn-primary" id="anterior">Anterior</button>
+                <button type="button" class="btn btn-primary" id="siguiente">Siguiente</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div id="descripcion-grafica">
+                    <h3>Descripción de la gráfica</h3>
+                    <ul id="lista-descripciones">
+                        <li>La imagen muestra una matriz de correlación, que es una tabla que muestra los coeficientes de correlación entre múltiples variables. En este caso, las variables incluyen Size (tamaño), Grad (gradiente), Days (días), Year (año), Month (mes), Week (semana), Unemployment (desempleo), CPI (Índice de Precios al Consumidor), varias variables de MarkDown (reducción de precios), Fuel_Price (precio del combustible), Temperature (temperatura), Weekly_Sales (ventas semanales), Dept (departamento) y Store (tienda)</li>
+                        <li>La matriz de correlación muestra las relaciones entre cinco variables cuantitativas. Se observa una correlación positiva fuerte entre 'Days' y 'Fuel_Price', lo que sugiere que a medida que aumentan los días, también tiende a aumentar el precio del combustible. Además, hay una correlación positiva muy fuerte entre 'Days' y 'CPI', indicando que estas variables están altamente relacionadas y varían juntas. También se encuentra una correlación positiva moderada entre 'Days' y 'Temperature', así como entre 'Fuel_Price' y 'CPI'. Por otro lado, se presentan correlaciones negativas débiles entre las variables y 'Weekly_Sales', lo que sugiere que otros factores podrían ser más influyentes en las ventas semanales que estas variables por sí solas. Es importante recordar que correlación no implica causalidad, y que este análisis se basa únicamente en las variables incluidas en la matriz.</li>
+                        <li>El gráfico muestra la "Temperatura Mensual" para los años 2010, 2011 y 2012, abarcando los meses de febrero a diciembre. Se observa un patrón estacional similar en los tres años, con temperaturas más bajas al inicio y al final del año, y temperaturas más altas en la mitad. Aunque las tendencias generales son consistentes, se aprecian algunas variaciones sutiles entre los años, como un aumento más rápido de la temperatura en 2010 entre los meses 2 y 4. Sin embargo, el gráfico no incluye datos de enero y no especifica la ubicación geográfica de los datos, lo que podría limitar una interpretación más completa.</li>
+                        <li>El gráfico muestra la evolución del precio del combustible a lo largo del tiempo, específicamente para los años 2010, 2011 y 2012. Se puede observar una alta variabilidad en el precio, con fluctuaciones significativas tanto dentro de cada año como entre años. Aunque hay fluctuaciones, se pueden observar algunas similitudes en las tendencias generales de los tres años, como un aumento en el precio del combustible hacia el final de 2011 y principios de 2012. Se pueden identificar picos y valles en el gráfico que indican momentos de precios altos y bajos, respectivamente. Sin embargo, el gráfico no incluye información sobre la fuente de los datos ni la ubicación geográfica a la que corresponden, lo que podría limitar una interpretación más completa.</li>
+                        <li>El gráfico muestra la evolución del Índice de Precios al Consumidor (IPC) para los años 2010, 2011 y 2012, revelando una tendencia general al alza, lo que sugiere un aumento en el nivel general de precios a lo largo del tiempo. Las tres líneas, correspondientes a cada año, muestran patrones similares de crecimiento del IPC, aunque con algunas variaciones en la magnitud de los cambios. Se puede apreciar que la tasa de crecimiento del IPC se acelera ligeramente en 2011 y 2012 en comparación con 2010. Sin embargo, el gráfico no incluye información sobre la fuente de los datos ni la ubicación geográfica a la que corresponden, lo que podría limitar una interpretación más completa.</li>
+                        <li>La gráfica te permite visualizar la relación entre los 'Días' y el 'IPC', así como la calidad del ajuste del modelo de regresión lineal. La línea de regresión muestra la tendencia general de los datos, y las predicciones te dan una idea de cómo podría evolucionar el IPC en el futuro.</li>
+                        <li>La gráfica muestra la relación entre el precio del combustible (Fuel_Price) y el Índice de Precios al Consumidor (CPI), junto con la línea de regresión lineal que mejor se ajusta a los datos. Los puntos azules representan los datos reales observados, donde cada punto indica la combinación de precio del combustible y CPI en un momento dado. La línea roja representa el modelo de regresión lineal, que intenta capturar la tendencia general de los datos. La cercanía de la línea a los puntos azules indica qué tan bien el modelo se ajusta a los datos. El título de la gráfica incluye el valor de R-cuadrado (R²), que es una medida de la calidad del ajuste del modelo. </li>
+                        <li>Este gráfico de líneas muestra la evolución del promedio de ventas semanales a lo largo del tiempo, donde el eje X representa los días en el período analizado y el eje Y muestra el promedio de ventas para cada día. La línea verde conecta los puntos de datos, facilitando la visualización de tendencias y patrones en las ventas semanales. </li>
+				<li>Este gráfico muestra la relación entre los días transcurridos desde el inicio del registro y el promedio de ventas semanales, junto con una línea de regresión lineal que modela esta relación y su proyección a futuro. Los puntos marrones representan los datos observados, mostrando la variación real de las ventas promedio a lo largo del tiempo. La línea marrón clara representa el modelo de regresión lineal ajustado a estos datos, extendiéndose para predecir las ventas hasta septiembre de 2013.  El valor de R-cuadrado (R²), incluido en la etiqueta de la línea de regresión, indica la calidad del ajuste del modelo, mostrando qué proporción de la variabilidad en las ventas se explica por el tiempo transcurrido.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
-        const graficas = ["./graficas/grafica1.html", "./graficas/grafica2.html", "./graficas/grafica3.html","./graficas/grafica4.html", "./graficas/grafica5.html", "./graficas/grafica6.html", "./graficas/grafica6.html", "./graficas/grafica7.html","./graficas/grafica8.html","./graficas/grafica9.html"];
-        let indiceGraficaActual = 0;
+        const iframeGrafica = document.getElementById('iframe-grafica');
+        const botonAnterior = document.getElementById('anterior');
+        const botonSiguiente = document.getElementById('siguiente');
+        const listaDescripciones = document.getElementById('lista-descripciones').getElementsByTagName('li');
+        let graficaActual = 1;
 
-        function cambiarGrafica(direccion) {
-            // Obtener el iframe y añadir la clase fade-in para la animación
-            const iframe = document.getElementById("iframe-grafica");
-            iframe.classList.add("fade-in");
-
-            // Esperar a que termine la animación antes de cambiar la ruta del iframe
-            setTimeout(() => {
-                indiceGraficaActual = (indiceGraficaActual + direccion + graficas.length) % graficas.length;
-                iframe.src = graficas[indiceGraficaActual];
-                iframe.classList.remove("fade-in"); // Remover la clase fade-in para la siguiente animación
-
-                const descripciones = ["Descripción de la gráfica 1", "Descripción de la gráfica 2",
-                    "Descripción de la gráfica 3","Descripción de la gráfica 4", "Descripción de la gráfica 5",
-                    "Descripción de la gráfica 6","Descripción de la gráfica 7", "Descripción de la gráfica 8",
-                    "Descripción de la gráfica 9"
-                ];
-                document.getElementById("descripcion-grafica").textContent = descripciones[indiceGraficaActual];
-            }, 500); // Espera 500ms (la duración de la animación)
+        function mostrarGrafica(numGrafica) {
+            iframeGrafica.src = `graficas/grafica${numGrafica}.html`;
+            for (let i = 0; i < listaDescripciones.length; i++) {
+                listaDescripciones[i].style.display = 'none';
+            }
+            listaDescripciones[numGrafica - 1].style.display = 'block';
         }
+
+        botonAnterior.addEventListener('click', () => {
+            graficaActual = graficaActual > 1 ? graficaActual - 1 : 1;
+            mostrarGrafica(graficaActual);
+        });
+
+        botonSiguiente.addEventListener('click', () => {
+            graficaActual = graficaActual < 9 ? graficaActual + 1 : 9;
+            mostrarGrafica(graficaActual);
+        });
+
+        mostrarGrafica(graficaActual); // Mostrar la primera gráfica al cargar la página
     </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
-
